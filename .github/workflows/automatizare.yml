@@ -5,17 +5,28 @@ on:
     - cron: '0 3 * * *'
   workflow_dispatch:
 
+concurrency:
+  group: publicare-site
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cod
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Pregatire Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: 'pip'
 
       - name: Instalare module Python
         run: pip install -r requirements.txt
@@ -25,6 +36,18 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scraper.py
 
+      - name: Salvare articole noi in repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/posts
+          if git diff --cached --quiet; then
+            echo "Nimic nou de salvat."
+          else
+            git commit -m "Articole noi generate automat"
+            git push
+          fi
+
       - name: Instalare Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -32,7 +55,7 @@ jobs:
           extended: true
 
       - name: Descarcare Tema Hugo
-        run: git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
+        run: git clone --depth=1 https://github.com/adityatelange/hugo-PaperMod themes/PaperMod
 
       - name: Construire site
         run: hugo --minify

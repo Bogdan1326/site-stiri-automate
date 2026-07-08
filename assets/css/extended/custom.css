@@ -1,0 +1,33 @@
+:root {
+    --accent: #3b82f6;
+}
+
+/* accent de culoare pe linkuri si elemente interactive */
+.post-title:hover,
+a.tag:hover,
+.top-link {
+    color: var(--accent) !important;
+}
+
+/* cartonase de articole mai clare, cu umbra usoara */
+.first-entry,
+.post-entry {
+    border-radius: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.first-entry:hover,
+.post-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* header cu accent de culoare */
+.nav {
+    border-bottom: 2px solid var(--accent);
+}
+
+/* imagine de cover mai armonioasa in card */
+.entry-cover img {
+    border-radius: 10px 10px 0 0;
+}

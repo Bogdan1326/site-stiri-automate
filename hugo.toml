@@ -1,4 +1,85 @@
 baseURL = "https://Bogdan1326.github.io/site-stiri-automate/"
+languageCode = "ro-ro"
 locale = "ro-RO"
 title = "Ultimele Noutăți din Tehnologie"
 theme = "PaperMod"
+paginate = 10
+
+enableRobotsTXT = true
+enableEmoji = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[taxonomies]
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  env = "production"
+  description = "Cele mai noi știri din lumea tehnologiei, scrise și publicate automat în fiecare zi cu ajutorul inteligenței artificiale."
+  keywords = ["tehnologie", "stiri tech", "AI", "noutati IT"]
+  author = "Bogdan"
+
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  ShowShareButtons = true
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  ShowFullTextinRSS = true
+  ShowToc = true
+  TocOpen = false
+  UseHugoToc = true
+
+  displayFullLangName = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  hidemeta = false
+  hideSummary = false
+
+  [params.homeInfoParams]
+    Title = "Bine ai venit 👋"
+    Content = "Un site de știri tech, actualizat automat în fiecare zi cu ajutorul inteligenței artificiale. Articolele sunt generate pe baza celor mai proaspete titluri din presa internațională."
+
+  [params.assets]
+    disableHLJS = false
+    favicon = "/favicon.ico"
+    favicon16x16 = "/favicon-16x16.png"
+    favicon32x32 = "/favicon-32x32.png"
+    apple_touch_icon = "/apple-touch-icon.png"
+
+  [[params.socialIcons]]
+    name = "rss"
+    url = "index.xml"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/Bogdan1326/site-stiri-automate"
+
+[menu]
+  [[menu.main]]
+    identifier = "archive"
+    name = "Arhivă"
+    url = "/archive/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "Etichete"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "search"
+    name = "Căutare"
+    url = "/search/"
+    weight = 30
+
+[markup]
+  [markup.highlight]
+    noClasses = false
