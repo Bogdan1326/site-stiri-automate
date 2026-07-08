@@ -27,7 +27,21 @@ for articol in stiri.entries[:3]:
         cale_fisier = f"content/posts/{nume_fisier}"
 
         data_azi = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S+00:00")
-        continut_final = f"---\ntitle: \"{titlu.replace('\"', \"'\")}\"\ndate: {data_azi}\ndraft: false\n---\n\n{continut}\n\n[Citește sursa originală aici]({link})\n"
+        
+        # Am mutat curățarea titlului aici, în afara f-string-ului
+        titlu_curat = titlu.replace('"', "'")
+        
+        # Am folosit formatul cu 3 ghilimele pentru a construi textul fără erori de backslash
+        continut_final = f"""---
+title: "{titlu_curat}"
+date: {data_azi}
+draft: false
+---
+
+{continut}
+
+[Citește sursa originală aici]({link})
+"""
         
         with open(cale_fisier, "w", encoding="utf-8") as f:
             f.write(continut_final)
