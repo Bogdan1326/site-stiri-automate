@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://Bogdan1326.github.io/site-stiri-automate/sitemap.xml
