@@ -1,4 +1,4 @@
 baseURL = "https://Bogdan1326.github.io/site-stiri-automate/"
-languageCode = "ro-RO"
+locale = "ro-RO"
 title = "Ultimele Noutăți din Tehnologie"
-theme = ""
+theme = "PaperMod"
